@@ -1,4 +1,4 @@
-<html class=""><head>
+<html><head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
      
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.0.0/github-markdown.min.css">
@@ -24,7 +24,7 @@
         }
       }
     </style>
-  <link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+  </head>
   <body>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
@@ -79,50 +79,42 @@
 <p>Habit Tracker operated by API</p>
 <h2><a id="usage" class="anchor" aria-hidden="true" href="#usage"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
 <h3><a id="user" class="anchor" aria-hidden="true" href="#user"><span aria-hidden="true" class="octicon octicon-link"></span></a>User</h3>
-<div class="highlight highlight-source-shell"><pre><span class="pl-c"><span class="pl-c">#</span> Create User</span>
-$ curl -X POST https://api.habitra.io/v1/users -d <span class="pl-s"><span class="pl-pds">'</span>{"id":"takagi","password":"thisispassword"}<span class="pl-pds">'</span></span>
-{<span class="pl-s"><span class="pl-pds">"</span>message<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>Success.<span class="pl-pds">"</span></span>}
-
-<span class="pl-c"><span class="pl-c">#</span> Update User</span>
-$ curl -X PUT --user takagi:thisispassword https://api.habitra.io/v1/users/takagi -d <span class="pl-s"><span class="pl-pds">'</span>{"password":"thisisnewpassword"}<span class="pl-pds">'</span></span>
-{<span class="pl-s"><span class="pl-pds">"</span>message<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>Success.<span class="pl-pds">"</span></span>}
-
-<span class="pl-c"><span class="pl-c">#</span> Delete User</span>
-$ curl -X DELETE --user takagi:thisisnewpassword https://api.habitra.io/v1/users/takagi
+<h4><a id="create-user" class="anchor" aria-hidden="true" href="#create-user"><span aria-hidden="true" class="octicon octicon-link"></span></a>Create User</h4>
+<div class="highlight highlight-source-shell"><pre>$ curl -X POST https://api.habitra.io/v1/users -d <span class="pl-s"><span class="pl-pds">'</span>{"id":"takagi","password":"thisispassword"}<span class="pl-pds">'</span></span>
+{<span class="pl-s"><span class="pl-pds">"</span>message<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>Success.<span class="pl-pds">"</span></span>}</pre></div>
+<h4><a id="update-user" class="anchor" aria-hidden="true" href="#update-user"><span aria-hidden="true" class="octicon octicon-link"></span></a>Update User</h4>
+<div class="highlight highlight-source-shell"><pre>$ curl -X PUT --user takagi:thisispassword https://api.habitra.io/v1/users/takagi -d <span class="pl-s"><span class="pl-pds">'</span>{"password":"thisisnewpassword"}<span class="pl-pds">'</span></span>
+{<span class="pl-s"><span class="pl-pds">"</span>message<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>Success.<span class="pl-pds">"</span></span>}</pre></div>
+<h4><a id="delete-user" class="anchor" aria-hidden="true" href="#delete-user"><span aria-hidden="true" class="octicon octicon-link"></span></a>Delete User</h4>
+<div class="highlight highlight-source-shell"><pre>$ curl -X DELETE --user takagi:thisisnewpassword https://api.habitra.io/v1/users/takagi
 {<span class="pl-s"><span class="pl-pds">"</span>message<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>Success.<span class="pl-pds">"</span></span>}</pre></div>
 <h3><a id="habit" class="anchor" aria-hidden="true" href="#habit"><span aria-hidden="true" class="octicon octicon-link"></span></a>Habit</h3>
-<div class="highlight highlight-source-shell"><pre><span class="pl-c"><span class="pl-c">#</span> Create Habit</span>
-$ curl -X POST --user takagi:thisispassword https://api.habitra.io/v1/users/takagi/habits -d <span class="pl-s"><span class="pl-pds">'</span>{"name":"Take a Yakult"}<span class="pl-pds">'</span></span>
-{<span class="pl-s"><span class="pl-pds">"</span>message<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>Success.<span class="pl-pds">"</span></span>}
-
-<span class="pl-c"><span class="pl-c">#</span> List Habit</span>
-$ curl -X GET --user takagi:thisispassword https://api.habitra.io/v1/users/takagi/habits
-{<span class="pl-s"><span class="pl-pds">"</span>habits<span class="pl-pds">"</span></span>:[{<span class="pl-s"><span class="pl-pds">"</span>id<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>01G9QNY2FRQRFQGBK6Q0N6EE7B<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>Take a Yakult<span class="pl-pds">"</span></span>}]}
-
-<span class="pl-c"><span class="pl-c">#</span> Update Habit</span>
-$ curl -X PUT --user takagi:thisispassword https://api.habitra.io/v1/users/takagi/habits/01G9QNY2FRQRFQGBK6Q0N6EE7B -d <span class="pl-s"><span class="pl-pds">'</span>{"name":"Take a sip of Yakult"}<span class="pl-pds">'</span></span>
-{<span class="pl-s"><span class="pl-pds">"</span>message<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>Success.<span class="pl-pds">"</span></span>}
-
-<span class="pl-c"><span class="pl-c">#</span> Delete Habit</span>
-$ curl -X DELETE --user takagi:thisispassword https://api.habitra.io/v1/users/takagi/habits/01G9QNY2FRQRFQGBK6Q0N6EE7B
+<h4><a id="create-habit" class="anchor" aria-hidden="true" href="#create-habit"><span aria-hidden="true" class="octicon octicon-link"></span></a>Create Habit</h4>
+<div class="highlight highlight-source-shell"><pre>$ curl -X POST --user takagi:thisispassword https://api.habitra.io/v1/users/takagi/habits -d <span class="pl-s"><span class="pl-pds">'</span>{"name":"Take a Yakult"}<span class="pl-pds">'</span></span>
+{<span class="pl-s"><span class="pl-pds">"</span>message<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>Success.<span class="pl-pds">"</span></span>}</pre></div>
+<h4><a id="list-habit" class="anchor" aria-hidden="true" href="#list-habit"><span aria-hidden="true" class="octicon octicon-link"></span></a>List Habit</h4>
+<div class="highlight highlight-source-shell"><pre>$ curl -X GET --user takagi:thisispassword https://api.habitra.io/v1/users/takagi/habits
+{<span class="pl-s"><span class="pl-pds">"</span>habits<span class="pl-pds">"</span></span>:[{<span class="pl-s"><span class="pl-pds">"</span>id<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>01G9QNY2FRQRFQGBK6Q0N6EE7B<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>Take a Yakult<span class="pl-pds">"</span></span>}]}</pre></div>
+<h4><a id="update-habit" class="anchor" aria-hidden="true" href="#update-habit"><span aria-hidden="true" class="octicon octicon-link"></span></a>Update Habit</h4>
+<div class="highlight highlight-source-shell"><pre>$ curl -X PUT --user takagi:thisispassword https://api.habitra.io/v1/users/takagi/habits/01G9QNY2FRQRFQGBK6Q0N6EE7B -d <span class="pl-s"><span class="pl-pds">'</span>{"name":"Take a sip of Yakult"}<span class="pl-pds">'</span></span>
+{<span class="pl-s"><span class="pl-pds">"</span>message<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>Success.<span class="pl-pds">"</span></span>}</pre></div>
+<h4><a id="delete-habit" class="anchor" aria-hidden="true" href="#delete-habit"><span aria-hidden="true" class="octicon octicon-link"></span></a>Delete Habit</h4>
+<div class="highlight highlight-source-shell"><pre>$ curl -X DELETE --user takagi:thisispassword https://api.habitra.io/v1/users/takagi/habits/01G9QNY2FRQRFQGBK6Q0N6EE7B
 {<span class="pl-s"><span class="pl-pds">"</span>message<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>Success.<span class="pl-pds">"</span></span>}</pre></div>
 <h3><a id="track" class="anchor" aria-hidden="true" href="#track"><span aria-hidden="true" class="octicon octicon-link"></span></a>Track</h3>
-<div class="highlight highlight-source-shell"><pre><span class="pl-c"><span class="pl-c">#</span> Create Track</span>
-$ curl -s -X POST --user takagi:thisispassword https://api.habitra.io/v1/users/takagi/habits/01G9QNY2FRQRFQGBK6Q0N6EE7B/tracks
-{<span class="pl-s"><span class="pl-pds">"</span>message<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>Success.<span class="pl-pds">"</span></span>}
-
-<span class="pl-c"><span class="pl-c">#</span># or</span>
-$ curl -s -X POST --user takagi:thisispassword https://api.habitra.io/v1/users/takagi/habits/01G9QNY2FRQRFQGBK6Q0N6EE7B/tracks -d <span class="pl-s"><span class="pl-pds">'</span>{"date":"2022-01-01"}<span class="pl-pds">'</span></span>
-{<span class="pl-s"><span class="pl-pds">"</span>message<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>Success.<span class="pl-pds">"</span></span>}
-
-<span class="pl-c"><span class="pl-c">#</span> List Track</span>
-$ curl -s -X GET --user takagi:thisispassword https://api.habitra.io/v1/users/takagi/habits/01G9QNY2FRQRFQGBK6Q0N6EE7B/tracks
-{<span class="pl-s"><span class="pl-pds">"</span>tracks<span class="pl-pds">"</span></span>:[{<span class="pl-s"><span class="pl-pds">"</span>date<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>2022-07-22<span class="pl-pds">"</span></span>}]}
-
-<span class="pl-c"><span class="pl-c">#</span> Delete Track</span>
-$ curl -s -X DELETE --user takagi:thisispassword https://api.habitra.io/v1/users/takagi/habits/01G9QNY2FRQRFQGBK6Q0N6EE7B/tracks/2022-07-22
+<h4><a id="create-track" class="anchor" aria-hidden="true" href="#create-track"><span aria-hidden="true" class="octicon octicon-link"></span></a>Create Track</h4>
+<div class="highlight highlight-source-shell"><pre>$ curl -s -X POST --user takagi:thisispassword https://api.habitra.io/v1/users/takagi/habits/01G9QNY2FRQRFQGBK6Q0N6EE7B/tracks
 {<span class="pl-s"><span class="pl-pds">"</span>message<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>Success.<span class="pl-pds">"</span></span>}</pre></div>
-</article><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻訳"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">翻訳を改善する</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+<p>or</p>
+<div class="highlight highlight-source-shell"><pre>$ curl -s -X POST --user takagi:thisispassword https://api.habitra.io/v1/users/takagi/habits/01G9QNY2FRQRFQGBK6Q0N6EE7B/tracks -d <span class="pl-s"><span class="pl-pds">'</span>{"date":"2022-01-01"}<span class="pl-pds">'</span></span>
+{<span class="pl-s"><span class="pl-pds">"</span>message<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>Success.<span class="pl-pds">"</span></span>}</pre></div>
+<h4><a id="list-track" class="anchor" aria-hidden="true" href="#list-track"><span aria-hidden="true" class="octicon octicon-link"></span></a>List Track</h4>
+<div class="highlight highlight-source-shell"><pre>$ curl -s -X GET --user takagi:thisispassword https://api.habitra.io/v1/users/takagi/habits/01G9QNY2FRQRFQGBK6Q0N6EE7B/tracks
+{<span class="pl-s"><span class="pl-pds">"</span>tracks<span class="pl-pds">"</span></span>:[{<span class="pl-s"><span class="pl-pds">"</span>date<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>2022-07-22<span class="pl-pds">"</span></span>}]}</pre></div>
+<h4><a id="delete-track" class="anchor" aria-hidden="true" href="#delete-track"><span aria-hidden="true" class="octicon octicon-link"></span></a>Delete Track</h4>
+<div class="highlight highlight-source-shell"><pre>$ curl -s -X DELETE --user takagi:thisispassword https://api.habitra.io/v1/users/takagi/habits/01G9QNY2FRQRFQGBK6Q0N6EE7B/tracks/2022-07-22
+{<span class="pl-s"><span class="pl-pds">"</span>message<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>Success.<span class="pl-pds">"</span></span>}</pre></div>
+</article>
   
 
-<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>
+</body></html>
