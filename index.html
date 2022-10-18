@@ -26,55 +26,6 @@
     </style>
   </head>
   <body>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript">
-      function loadmd() {
-        $.ajax({
-          url: "/__/md",
-          success: function (result) {
-            $("#markdown-body").html(result).promise().done(function(){
-              var count = $("#markdown-body a").length;
-              $("#markdown-body a").each(function(i){
-              var a = $(this);
-              if (a.attr("id") != undefined ) {
-                var id = a.attr("id").replace("user-content-", "");
-                a.attr("id", id);
-              }
-              if (i+1 === count) {
-                if(location.hash) {
-                  var url = location.href;
-                  location.href = location.hash;
-                  history.replaceState(null,null,url);
-                }
-              }
-            })
-          })}
-        })
-      };
-      (function () {
-        var reload = false
-         reload = true 
-        if (reload) {
-          var conn = new WebSocket("ws://localhost:3333/ws")
-          conn.onopen = function () {
-              conn.send('Ping');
-          };
-          conn.onerror = function (e) {
-            console.log("Connection error " + e);
-          };
-          conn.onclose = function (e) {
-            console.log("Connection closed " + e)
-          }
-          conn.onmessage = function (e) {
-            if (e.data === "reload") {
-              console.log("reload page!")
-              loadmd()
-            }
-          }
-        }
-        loadmd()
-      })()
-    </script>
     <article id="markdown-body" class="markdown-body"><h1><a id="habitra" class="anchor" aria-hidden="true" href="#habitra"><span aria-hidden="true" class="octicon octicon-link"></span></a>HabiTra</h1>
 <p>Habit Tracker operated by API</p>
 <h2><a id="usage" class="anchor" aria-hidden="true" href="#usage"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
